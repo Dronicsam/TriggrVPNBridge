@@ -1,0 +1,13 @@
+Package: local.triggrvpnbridge
+Name: Triggr VPN Bridge
+Version: @VERSION@
+Architecture: iphoneos-arm64
+Maintainer: Andrey Samokhvalov <110901407+Dronicsam@users.noreply.github.com>
+Author: Andrey Samokhvalov
+Section: Tweaks
+Priority: optional
+Depends: firmware (>= 16.0), firmware (<< 17.0), ellekit, notifyutil
+Homepage: https://github.com/Dronicsam/TriggrVPNBridge
+Description: Toggle the selected system VPN from Triggr without Shortcuts.
+ Includes Triggr action-picker integration and a command-line wrapper.
+ Uses private iOS APIs. See the compatibility notes before installing.

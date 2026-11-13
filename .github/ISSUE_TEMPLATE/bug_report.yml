@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible problem with the bridge
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: Device, iOS, jailbreak and Triggr versions
+    validations:
+      required: true
+  - type: input
+    id: package
+    attributes:
+      label: Package version and commit or SHA-256
+    validations:
+      required: true
+  - type: input
+    id: vpn
+    attributes:
+      label: VPN app and On Demand / Always On settings
+      description: Do not include profiles, server addresses, keys or subscriptions.
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps, expected result and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: Output of triggr-vpn status
+      description: A diagnostic code is enough. Redact personal data from any logs.

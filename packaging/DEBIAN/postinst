@@ -1,0 +1,5 @@
+#!/var/jb/bin/sh
+set -eu
+if [ "${1:-}" = configure ]; then
+    printf '%s\n' 'Triggr VPN Bridge installed. Respring to load the bridge.'
+fi

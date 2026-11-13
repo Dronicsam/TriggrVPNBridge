@@ -1,0 +1,12 @@
+#!/var/jb/bin/sh
+# SPDX-License-Identifier: MIT
+# Triggr supplies one item argument; never evaluate it as shell code.
+set -eu
+if [ "$#" -ne 1 ]; then exit 64; fi
+case "$1" in
+    'Toggle VPN') action=toggle ;;
+    'Turn VPN On') action=on ;;
+    'Turn VPN Off') action=off ;;
+    *) exit 64 ;;
+esac
+exec /var/jb/usr/bin/triggr-vpn "$action"

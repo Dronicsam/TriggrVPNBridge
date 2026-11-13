@@ -1,0 +1,25 @@
+name: Build and validate
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Host tests
+        run: make check
+      - name: Build and package with Apple tools
+        run: make package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TriggrVPNBridge-deb
+          path: dist/*
+          if-no-files-found: error

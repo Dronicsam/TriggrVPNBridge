@@ -1,0 +1,5 @@
+#!/var/jb/bin/sh
+set -eu
+case "${1:-}" in
+    remove|purge) printf '%s\n' 'Triggr VPN Bridge removed. Respring to unload the bridge.' ;;
+esac

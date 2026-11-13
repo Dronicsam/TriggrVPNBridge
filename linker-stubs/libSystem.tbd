@@ -1,0 +1,8 @@
+--- !tapi-tbd
+tbd-version: 4
+targets: [ arm64-ios, arm64e-ios ]
+install-name: /usr/lib/libSystem.B.dylib
+exports:
+  - targets: [ arm64-ios, arm64e-ios ]
+    symbols: [ _notify_register_check, _notify_set_state, _notify_post, _write, _dlopen, _dispatch_async_f, __dispatch_main_q ]
+...

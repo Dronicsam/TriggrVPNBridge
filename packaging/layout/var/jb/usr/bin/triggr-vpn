@@ -1,0 +1,17 @@
+#!/var/jb/bin/sh
+# SPDX-License-Identifier: MIT
+# Exit status confirms posting only, not a connected/disconnected tunnel.
+set -eu
+usage() { printf '%s\n' 'Usage: triggr-vpn toggle|on|off|status' >&2; }
+if [ "$#" -ne 1 ]; then usage; exit 64; fi
+case "$1" in
+    toggle|on|off) option=-p ;;
+    status) option=-g ;;
+    -h|--help|help) usage; exit 0 ;;
+    *) usage; exit 64 ;;
+esac
+if [ ! -x /var/jb/usr/bin/notifyutil ]; then
+    printf '%s\n' 'notifyutil is missing. Install the notifyutil package from Procursus.' >&2
+    exit 69
+fi
+exec /var/jb/usr/bin/notifyutil "$option" "local.triggrvpnbridge.$1"

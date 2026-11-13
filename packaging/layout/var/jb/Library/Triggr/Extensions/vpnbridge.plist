@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+    <key>Title</key><string>VPN</string>
+    <key>ItemTitle</key><string>VPN</string>
+    <key>Symbol</key><string>network</string>
+    <key>Color</key><string>indigo</string>
+    <key>ItemsDirectory</key><string>/var/jb/Library/TriggrVPNBridge/Actions</string>
+    <key>ItemsExtension</key><string>action</string>
+    <key>Program</key><string>/var/jb/usr/libexec/triggr-vpn-action</string>
+</dict></plist>
