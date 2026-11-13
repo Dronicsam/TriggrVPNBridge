@@ -12,7 +12,8 @@ xcrun --find lipo >/dev/null
 mkdir -p build
 rm -f build/TriggrVPNBridge.dylib
 for ARCH in arm64 arm64e; do
-    xcrun clang -target "$ARCH-apple-ios16.0" -dynamiclib -nostdlib -O2 \
+    # No SDK headers are used. Override xcrun's macOS SDK default explicitly.
+    xcrun clang -target "$ARCH-apple-ios16.0" -isysroot / -dynamiclib -nostdlib -O2 \
         -Wall -Wextra -Werror -fno-stack-protector \
         -L"$ROOT/linker-stubs" -lSystem -lobjc -lFoundation -lCoreFoundation \
         -Wl,-install_name,/var/jb/Library/MobileSubstrate/DynamicLibraries/TriggrVPNBridge.dylib \
