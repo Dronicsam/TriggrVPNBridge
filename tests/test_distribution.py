@@ -40,6 +40,7 @@ class PackageTests(unittest.TestCase):
             fake = directory / "fixture.dylib"
             fake.write_bytes(b"archive-test-only")
             output = create_deb(fake, directory / "one", 1234567890)
+            self.assertNotIn("~", output.name)
             again = create_deb(fake, directory / "two", 1234567890)
             self.assertEqual(output.read_bytes(), again.read_bytes())
             members = read_deb(output)

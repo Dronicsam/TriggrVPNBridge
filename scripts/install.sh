@@ -8,7 +8,8 @@ if [[ ! "$DEVICE" =~ ^[A-Za-z0-9_][A-Za-z0-9_.-]*@[A-Za-z0-9][A-Za-z0-9_.-]*$ ]]
     exit 64
 fi
 VERSION="$(tr -d '\n' < "$ROOT/VERSION")"
-PACKAGE="$ROOT/dist/local.triggrvpnbridge_${VERSION}_iphoneos-arm64.deb"
+FILENAME_VERSION="${VERSION//~/-}"
+PACKAGE="$ROOT/dist/local.triggrvpnbridge_${FILENAME_VERSION}_iphoneos-arm64.deb"
 if [ ! -f "$PACKAGE" ]; then
     printf '%s\n' 'Build the package first: make package' >&2
     exit 1

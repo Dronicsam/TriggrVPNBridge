@@ -83,7 +83,9 @@ def create_deb(binary: Path, destination: Path, epoch: int = 0) -> Path:
                            ("control.tar.gz", tar_gzip(control_dir, epoch)),
                            ("data.tar.gz", tar_gzip(payload, epoch))):
             archive += ar_member(name, data, epoch)
-        result = destination / f"local.triggrvpnbridge_{version}_iphoneos-arm64.deb"
+        # GitHub release uploads sanitize '~'; keep names/checksums portable.
+        filename_version = version.replace("~", "-")
+        result = destination / f"local.triggrvpnbridge_{filename_version}_iphoneos-arm64.deb"
         result.write_bytes(archive)
         digest = hashlib.sha256(archive).hexdigest()
         result.with_suffix(".deb.sha256").write_text(f"{digest}  {result.name}\n")
